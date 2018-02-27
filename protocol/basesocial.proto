@@ -1,0 +1,100 @@
+syntax = "proto3";
+package protocol;
+option java_package="com.social.protocol.basesocial";
+option optimize_for=SPEED;
+option objc_class_prefix="BSS";
+
+
+message Head
+{
+	//请求填写的参数 包基本参数
+	int32 cmd = 3; //命令号  必填
+
+	//key参数 
+	int32 keytype = 20;  //key的类型 取值为KeyType   必填
+	uint64 uid = 21; // 登录前协议uid为0, 登陆后都是以这个为用户标识符   必填  协议按uid路由，如果
+	bytes  key = 22;  //key 与uid只有一个有效，根据keytype判断 服务器实现可能会以string为key写某条数据  没有uid必填
+
+
+	//客户端动态参数
+	uint32 clipkgseq = 34; //客户端生成的包序号   必填
+
+
+	//回包增加的参数
+	int32  retcode = 50;  //处理结果  0 = 成功 否则不成功 <0 表示服务器的接口返回码
+}
+
+message Msg
+{
+	Head head = 1;
+	bytes body = 2; 
+}
+
+message ClientVer
+{
+	int32 platform = 1;
+	bytes  versioname = 2; 
+	bytes  channelid = 3; 
+}
+
+message DeviceVer
+{
+	uint32 screensize = 1; //屏幕大小
+	bytes  imei = 2;  //imei
+	bytes  deviceversion = 3; //设备版本
+}
+
+message PlatParam
+{
+	bytes platname = 1;  //平台名称
+	bytes instancename = 2; //实例名称
+}
+
+
+enum CMD{
+//CMD_START
+	NONE = 0;
+	REQ_RSP_SPAN = 100000;
+
+	//通用协议，服务器每个服务器实现
+	//1-1000
+	HEARTBEAT_REQ = 1;  //HeartBeatReq
+	HEARTBEAT_RSP = 100001; //HeartBeatRsp
+
+	//拉去列表协议，接入层必须实现
+	//access
+	GETSVRLIST_REQ = 2; //GetSvrListReq
+	GETSVRLIST_RSP = 100002; // GetSvrListRsp
+
+}
+
+
+
+//协议
+message HeartBeatReq
+{
+	string ip = 1;
+	uint32 port = 2;
+}
+
+enum SVR_STAUS{
+	STATUS_DEAD = 0;
+	STATUS_ALIVE = 1;
+}
+
+message HeartBeatRsp
+{
+	uint32 remotetime = 3;
+	string ip = 4; //ip
+	uint32 port = 5; //
+}
+
+message GetSvrListReq
+{
+	repeated bytes modname = 1; //模块名，支持http接入和socket接入, 上报，流服务器[access, http, report, stream]
+	uint32 istestenv = 2; //是否测试环境 0 不是 1 是
+}
+
+message GetSvrListRsp
+{
+}
