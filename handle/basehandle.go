@@ -2,12 +2,12 @@ package handle
 
 import (
 	"github.com/astaxie/beego/logs"
-	. "github.com/fsvr/dispatcherinterface"
-	"github.com/fsvr/ihandle"
-	"github.com/fsvr/netinterface"
-	. "github.com/fsvr/packet"
-	. "github.com/fsvr/protocol"
 	"github.com/golang/protobuf/proto"
+	. "github.com/ssucc/goasyncsvr/dispatcherinterface"
+	"github.com/ssucc/goasyncsvr/ihandle"
+	"github.com/ssucc/goasyncsvr/netinterface"
+	. "github.com/ssucc/goasyncsvr/packet"
+	. "github.com/ssucc/goasyncsvr/protocol"
 )
 
 //定义handle的映射，每次增加一个handle，就需要在这里添加映射

@@ -1,9 +1,9 @@
 package ihandle
 
 import (
-	. "github.com/fsvr/dispatcherinterface"
-	"github.com/fsvr/netinterface"
-	. "github.com/fsvr/packet"
+	. "github.com/ssucc/goasyncsvr/dispatcherinterface"
+	"github.com/ssucc/goasyncsvr/netinterface"
+	. "github.com/ssucc/goasyncsvr/packet"
 )
 
 type InHandler interface {

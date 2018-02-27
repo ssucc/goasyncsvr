@@ -3,9 +3,9 @@ package server
 import (
 	"errors"
 	"github.com/astaxie/beego/logs"
-	"github.com/fsvr/base"
-	"github.com/fsvr/dispatcherinterface"
-	"github.com/fsvr/network"
+	"github.com/ssucc/goasyncsvr/base"
+	"github.com/ssucc/goasyncsvr/dispatcherinterface"
+	"github.com/ssucc/goasyncsvr/network"
 	"net"
 )
 

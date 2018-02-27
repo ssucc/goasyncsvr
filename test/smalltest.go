@@ -4,8 +4,8 @@ import (
 	//"fmt"
 	//"reflect"
 	"flag"
-	"github.com/fsvr/base"
 	"github.com/astaxie/beego/logs"
+	"github.com/ssucc/goasyncsvr/base"
 )
 
 type Foo struct {
@@ -20,27 +20,27 @@ var regStruct map[string]interface{}
 
 func main() {
 	/*
-	type T struct {
-		A int
-		B string
-	}
+		type T struct {
+			A int
+			B string
+		}
 
-	t := T{23, "skidoo"}
-	s := reflect.ValueOf(&t).Elem()
-	typeOfT := s.Type()
-	for i := 0; i < s.NumField(); i++ {
-		f := s.Field(i)
-		fmt.Printf("%d: %s %s = %v\n", i,
-			typeOfT.Field(i).Name, f.Type(), f.Interface())
-	}
+		t := T{23, "skidoo"}
+		s := reflect.ValueOf(&t).Elem()
+		typeOfT := s.Type()
+		for i := 0; i < s.NumField(); i++ {
+			f := s.Field(i)
+			fmt.Printf("%d: %s %s = %v\n", i,
+				typeOfT.Field(i).Name, f.Type(), f.Interface())
+		}
 
-	str := "Bar"
-	if regStruct[str] != nil {
-		t := reflect.ValueOf(regStruct[str]).Type()
-		fmt.Printf("ttype:%s", t.Name())
-		v := reflect.New(t).Elem()
-		fmt.Println(v)
-	}
+		str := "Bar"
+		if regStruct[str] != nil {
+			t := reflect.ValueOf(regStruct[str]).Type()
+			fmt.Printf("ttype:%s", t.Name())
+			v := reflect.New(t).Elem()
+			fmt.Println(v)
+		}
 	*/
 
 	tfilename := flag.String("conf", "./cliet.conf", "-conf=./client.conf")
@@ -53,11 +53,11 @@ func main() {
 	}
 
 	m := conf.GetSection("bidlist")
-	for k,v := range(m){
+	for k, v := range m {
 		logs.Info("k:%s v:%s", k, v)
 	}
 
-	logs.Info("host:%s path1:%s", conf.GetFieldStr("host", "localhost"), conf.GetFieldStr("path1", "nopath"));
+	logs.Info("host:%s path1:%s", conf.GetFieldStr("host", "localhost"), conf.GetFieldStr("path1", "nopath"))
 }
 
 func init() {

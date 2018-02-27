@@ -6,7 +6,7 @@ package queue
 
 import (
 	"container/list"
-	. "github.com/fsvr/packet"
+	. "github.com/ssucc/goasyncsvr/packet"
 	"time"
 )
 

@@ -1,9 +1,9 @@
 package dispatcherinterface
 
 import (
-	"github.com/fsvr/base"
-	"github.com/fsvr/netinterface"
-	"github.com/fsvr/packet"
+	"github.com/ssucc/goasyncsvr/base"
+	"github.com/ssucc/goasyncsvr/netinterface"
+	"github.com/ssucc/goasyncsvr/packet"
 )
 
 type IDispatcher interface {
